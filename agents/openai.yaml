@@ -1,0 +1,5 @@
+interface:
+  display_name: "秋秋工作台搭建器"
+  short_description: "把需求做成可离线使用、可备份、可分享的个人效率工作台"
+  brand_color: "#E48B9A"
+  default_prompt: "使用 $qiuqiu-workbench-builder，把我的想法整理成一个可在手机和电脑使用的个人工作台。"
