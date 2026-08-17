@@ -48,6 +48,28 @@ const VARIANTS = [
   { theme: 'kuromi',      prefix: 'wb_kuromi_',      title: '秋秋工作台' },
 ];
 
+// Validate the source icon registry before producing dist files. Without this
+// check a new theme can silently fall back to minimal emoji icons.
+const ICON_KEYS = ['home', 'todo', 'create', 'media', 'ledger', 'health', 'diary', 'finance', 'ai', 'brand'];
+const ICONS_FILE = path.join(here, '..', 'assets', 'icons', 'icons.js');
+const iconSource = fs.readFileSync(ICONS_FILE, 'utf8').trim();
+const iconMatch = iconSource.match(/^const ICON_IMGS=(.*);$/s);
+if (!iconMatch) { console.error('Cannot parse ' + ICONS_FILE); process.exit(1); }
+let iconMap;
+try { iconMap = JSON.parse(iconMatch[1]); } catch (error) {
+  console.error('Invalid JSON in ' + ICONS_FILE + ':', error.message);
+  process.exit(1);
+}
+VARIANTS.forEach(v => {
+  const icons = iconMap[v.theme];
+  if (!icons) throw new Error(`Missing icon set for theme: ${v.theme}`);
+  ICON_KEYS.forEach(key => {
+    if (typeof icons[key] !== 'string' || (!icons[key].startsWith('data:') && v.theme !== 'minimal')) {
+      throw new Error(`Missing runtime icon ${v.theme}.${key}`);
+    }
+  });
+});
+
 // Sub-tabs to click through per module, so the smoke test exercises every branch.
 // Keys must match state.tabs.<module>; values are the tab keys.
 const SUBTABS = {

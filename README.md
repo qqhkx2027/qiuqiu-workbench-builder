@@ -27,7 +27,7 @@
 | POP MART 糖果色 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/popmart.html) |
 | Kuromi 紫夜 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/kuromi.html) |
 
-POP MART 主题使用你提供的 10 张图片生成 9 个导航图标和 1 个工作台头像；Kuromi 主题使用 9 张图片生成对应图标。原图不写入成品，图标会压缩后内联到单文件 HTML。
+POP MART 主题使用你提供的 10 张图片生成 9 个导航图标和 1 个工作台头像；Kuromi 主题使用 9 张图片生成对应图标。原图不写入成品，图标会同时保存为 `assets/icons/<主题>_*.png` 供检查，并以内联 PNG Base64 写入单文件 HTML。
 
 也可以直接打开 WorkBuddy 版本：[秋秋工作台 · pink](https://eee341961ba346b4be4538e1e8703b3e.app.workbuddy.link/pink.html)
 
@@ -117,9 +117,9 @@ qiuqiu-workbench-builder/
 ├── assets/
 │   ├── starter.html                 # 轻量起始模板
 │   ├── qiqiu-workbench-source.html  # 完整生产范例
-│   └── icons/                       # 主题图标资源（含 POP MART、Kuromi 优化图标）
+│   └── icons/                       # 主题 PNG 预览、brand 与 icons.js 运行时清单
 ├── scripts/build.js                 # 维护者构建与冒烟测试
-├── tools/generate_theme_icons.py    # 统一生成图片主题图标
+├── tools/generate_theme_icons.py    # 同时生成 PNG 预览和 icons.js 映射
 ├── tools/generate_icons.py          # 旧版九宫格图标兼容脚本
 └── dist/                            # 已生成的在线预览文件
 ```
@@ -128,7 +128,7 @@ qiuqiu-workbench-builder/
 
 直接使用上面的在线预览即可。
 
-`assets/`、`scripts/` 和 `dist/` 主要服务于技能维护者：当需要修改模板、增加主题或生成离线 HTML 时，维护者才需要运行构建脚本。它不是普通用户的安装前置条件。
+`assets/`、`scripts/` 和 `dist/` 主要服务于技能维护者：当需要修改模板、增加主题或生成离线 HTML 时，维护者才需要运行构建脚本。它不是普通用户的安装前置条件。图标目录的文件说明见 [`assets/icons/README.md`](assets/icons/README.md)。
 
 ## 数据与隐私
 
@@ -145,7 +145,7 @@ qiuqiu-workbench-builder/
 node scripts/build.js
 ```
 
-构建脚本会检查所有主题和子模块，必须看到：
+构建脚本会先检查每套主题是否拥有完整的 `home`～`ai` 与 `brand` 图标，再检查所有主题和子模块，必须看到：
 
 ```text
 ALL VARIANTS PASSED

@@ -54,7 +54,7 @@ description: 把个人效率、生活管理或内容创作需求整理成可离�
 
 1. 只修改 `assets/qiuqiu-workbench-source.html` 这一份业务源文件；保留 `{{THEME}}`、`{{PREFIX}}`、`{{TITLE}}` 三个令牌。
 2. 新增主题时同时补齐 `scripts/build.js` 变体、源文件 `data-theme` CSS 和 `assets/icons/icons.js` 图标集合。
-3. 图片主题使用：
+3. 图片主题使用（同时生成 PNG 预览和运行时图标清单）：
 
    ```bash
    python3 tools/generate_theme_icons.py <theme> "/path/to/images" [--brand-index N]
@@ -62,7 +62,7 @@ description: 把个人效率、生活管理或内容创作需求整理成可离�
    node scripts/build.js
    ```
 
-   脚本按文件名读取至少 9 张 `IMG_*.JPG`，只把压缩后的 120px data URI 写入成品；原图可以留在仓库外。
+   脚本按文件名读取至少 9 张 JPG/PNG/WEBP 图片，把统一裁切的 120px PNG 保存到 `assets/icons/`，再把同一批图标写成 data URI；原图可以留在仓库外。
 
 4. 构建脚本会生成 `dist/` 下的每套主题，并对所有模块和子标签运行 Node `vm` 冒烟测试。必须看到 `ALL VARIANTS PASSED`。
 5. 运行 Skill 校验：
@@ -82,7 +82,7 @@ description: 把个人效率、生活管理或内容创作需求整理成可离�
 - `assets/qiuqiu-workbench-source.html`：9 个模块、6 套主题的生产源文件。
 - `assets/starter.html`：从零搭建轻量工作台的起始模板。
 - `scripts/build.js`：生成所有离线 HTML 并运行全量冒烟测试。
-- `tools/generate_theme_icons.py`：统一生成图片主题图标；`tools/generate_icons.py`：旧版三丽鸥九宫格兼容流水线。
+- `tools/generate_theme_icons.py`：统一生成图片主题 PNG 预览和 `icons.js` 映射；`tools/generate_icons.py`：旧版三丽鸥九宫格兼容流水线。
 - `tools/patch_icons.py`：把图标映射和图片导航注入源文件。
 - `references/standards.md`：详细设计、数据兼容和主题标准。
 - `references/qiuqiu-workbench-method.md`：秋秋工作法、提问模板和示例信息架构。
