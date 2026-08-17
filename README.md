@@ -10,6 +10,14 @@
 
 [打开秋秋工作台](https://eee341961ba346b4be4538e1e8703b3e.app.workbuddy.link/pink.html)
 
+GitHub Pages 预览：[打开在线预览](https://qqhkx2027.github.io/qiuqiu-workbench-builder/)
+
+其他主题：
+
+- [少女粉](https://qqhkx2027.github.io/qiuqiu-workbench-builder/pink.html)
+- [酷帅黑](https://qqhkx2027.github.io/qiuqiu-workbench-builder/dark.html)
+- [玉桂狗蓝](https://qqhkx2027.github.io/qiuqiu-workbench-builder/cinnamoroll.html)
+
 ## 这个 Skill 能做什么
 
 - 根据用户的目标和使用场景设计工作台信息架构
