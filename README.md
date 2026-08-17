@@ -41,6 +41,12 @@
 | [POP MART 糖果色](https://qqhkx2027.github.io/qiuqiu-workbench-builder/popmart.html) | 玩具感、彩色 | 喜欢收藏和视觉装饰 |
 | [Kuromi 紫夜](https://qqhkx2027.github.io/qiuqiu-workbench-builder/kuromi.html) | 深紫、个性 | 喜欢暗色与潮流风格 |
 
+#### 秋秋同款粉色主题
+
+<p align="center">
+  <img src="assets/readme/qiuqiu-workbench-pink-preview.png" alt="秋秋同款粉色主题预览" width="100%">
+</p>
+
 ## 安装给智能体
 
 最简单的方式，是把下面这段话和仓库地址一起发给你的智能体：
@@ -126,6 +132,7 @@ qiuqiu-workbench-builder/
 ├── assets/
 │   ├── starter.html                 # 轻量起始模板
 │   ├── qiqiu-workbench-source.html  # 完整生产源文件
+│   ├── readme/                       # README 展示图片
 │   └── icons/                       # PNG 预览、brand 和 icons.js 运行时清单
 ├── scripts/build.js                 # 构建所有主题并运行冒烟测试
 ├── tools/generate_theme_icons.py    # 生成图片主题图标
