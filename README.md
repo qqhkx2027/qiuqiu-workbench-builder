@@ -24,6 +24,10 @@
 | 秋秋粉色 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/pink.html) |
 | 酷帅黑 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/dark.html) |
 | 玉桂狗蓝 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/cinnamoroll.html) |
+| POP MART 糖果色 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/popmart.html) |
+| Kuromi 紫夜 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/kuromi.html) |
+
+POP MART 主题使用你提供的 10 张图片生成 9 个导航图标和 1 个工作台头像；Kuromi 主题使用 9 张图片生成对应图标。原图不写入成品，图标会压缩后内联到单文件 HTML。
 
 也可以直接打开 WorkBuddy 版本：[秋秋工作台 · pink](https://eee341961ba346b4be4538e1e8703b3e.app.workbuddy.link/pink.html)
 
@@ -84,7 +88,7 @@ https://github.com/qqhkx2027/qiuqiu-workbench-builder
 | 数据备份 | 首屏提供 JSON 导出、导入恢复和清空示例 |
 | 今日入口 | 优先显示逾期、今天和临近到期事项 |
 | 移动适配 | 手机单列布局、44px 点击区、底部安全区 |
-| 多主题 | 一份源模板生成多套视觉变体，数据前缀相互隔离 |
+| 多主题 | 一份源模板生成多套视觉变体（含 POP MART、Kuromi），数据前缀相互隔离 |
 | 离线文件 | 生成后的单文件 HTML 不依赖后端、框架或 CDN |
 
 ## 项目结构
@@ -99,7 +103,7 @@ qiuqiu-workbench-builder/
 ├── assets/
 │   ├── starter.html                 # 轻量起始模板
 │   ├── qiqiu-workbench-source.html  # 完整生产范例
-│   └── icons/                       # 主题图标资源
+│   └── icons/                       # 主题图标资源（含 POP MART 优化图标）
 ├── scripts/build.js                 # 维护者构建与冒烟测试
 └── dist/                            # 已生成的在线预览文件
 ```
