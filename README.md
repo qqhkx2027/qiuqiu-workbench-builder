@@ -4,6 +4,12 @@
 
 它适合制作待办、记账、习惯打卡、备考、减脂、育儿、自媒体和全能生活工作台。工作台使用单文件 HTML，不需要后端、框架、账号或 CDN，数据默认保存在用户自己的浏览器中。
 
+## 在线使用
+
+当前成品直接使用 WorkBuddy 在线页面，不需要安装 Node.js，也不需要执行本地构建：
+
+[打开秋秋工作台](https://eee341961ba346b4be4538e1e8703b3e.app.workbuddy.link/pink.html)
+
 ## 这个 Skill 能做什么
 
 - 根据用户的目标和使用场景设计工作台信息架构
@@ -74,26 +80,11 @@ https://github.com/qqhkx2027/qiuqiu-workbench-builder
 
 `assets/qiqiu-workbench-source.html` 是 9 个模块、4 套主题的完整生产范例；新项目建议从 `assets/starter.html` 开始，首版只做 3–4 个核心模块。
 
-## 本地构建
+## 关于源文件和构建脚本
 
-需要 Node.js 18 或更高版本：
+仓库中的 `assets/`、`scripts/` 和 `dist/` 是技能维护资源。普通用户不需要下载依赖、运行脚本或本地构建，直接使用上面的在线工作台即可。
 
-```bash
-cd qiuqiu-workbench-builder
-node scripts/build.js
-```
-
-构建完成后会在 `dist/` 生成主题文件，并自动运行所有主题和子标签的冒烟测试。看到下面这行才算通过：
-
-```text
-ALL VARIANTS PASSED
-```
-
-然后可以直接打开：
-
-```text
-dist/index.html
-```
+维护者修改模板或新增主题时，才需要使用 `scripts/build.js` 重新生成 `dist/` 并运行冒烟测试。
 
 ## 目录结构
 
