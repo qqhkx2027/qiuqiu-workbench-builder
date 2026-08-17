@@ -122,6 +122,10 @@ function smoke(html, label) {
     const renderFns = Object.getOwnPropertyNames(sandbox)
       .filter(n => n.startsWith('render') && typeof sandbox[n] === 'function');
     if (!renderFns.length) throw new Error('No render* functions found');
+    const crudFns = ['addTodo','editTodo','addGoal','editGoal','addTrip','editTrip','addSchedule','editSchedule','addAINews','editAINews','addFinNews','editFinNews','addLedger','editLedger','addMedia','editMedia','addDrum','editDrum','addFood','editFood','addDiaryItem','removeItem'];
+    crudFns.forEach(name => {
+      if (typeof sandbox[name] !== 'function') throw new Error('Missing CRUD function: ' + name);
+    });
     renderFns.forEach(name => {
       sandbox[name]();
       console.log('OK  ' + name + '  (content length: ' + (elements['content'] ? elements['content']._html.length : 0) + ')');
