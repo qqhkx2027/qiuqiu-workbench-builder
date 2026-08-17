@@ -74,5 +74,5 @@ description: 把用户的个人效率、生活管理或内容创作需求，设�
 - `references/qiuqiu-workbench-method.md`：秋秋文章提炼出的工作台方法、提问模板和示例信息架构。
 - `scripts/build.js`：从单一源文件生成多主题并运行全变体冒烟测试。
 - `assets/starter.html`：从零搭建轻量工作台的起始模板。
-- `assets/qiuqiu-workbench-source.html`：9 个模块、4 套主题的完整生产范例。
-- `tools/generate_icons.py`、`tools/patch_icons.py`：图标生成和注入流水线。
+- `assets/qiuqiu-workbench-source.html`：9 个模块、6 套主题的完整生产范例。
+- `tools/generate_icons.py`、`tools/generate_popmart_icons.py`、`tools/generate_kuromi_icons.py`、`tools/patch_icons.py`：图标生成和注入流水线。

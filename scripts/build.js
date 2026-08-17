@@ -44,6 +44,8 @@ const VARIANTS = [
   { theme: 'pink',        prefix: 'wb_pink_',        title: '秋秋工作台' },
   { theme: 'dark',        prefix: 'wb_dark_',        title: '秋秋工作台' },
   { theme: 'cinnamoroll', prefix: 'wb_cinnamoroll_', title: '秋秋工作台' },
+  { theme: 'popmart',     prefix: 'wb_popmart_',     title: '秋秋工作台' },
+  { theme: 'kuromi',      prefix: 'wb_kuromi_',      title: '秋秋工作台' },
 ];
 
 // Sub-tabs to click through per module, so the smoke test exercises every branch.

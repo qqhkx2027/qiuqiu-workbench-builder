@@ -85,7 +85,7 @@
 
 ---
 
-## 多主题与图标流水线（本 skill 默认 4 套）
+## 多主题与图标流水线（本 skill 默认 6 套）
 
 ### 主题 = 模板令牌 + 隔离前缀 + 独立图标集
 每套风格由三样东西共同定义，缺一个都不行：
@@ -100,8 +100,10 @@
 - 重新跑 `generate_icons.py`→`patch_icons.py`→`build.js`。
 
 ### 图标生成（三丽鸥风格）
-默认 4 套：`minimal`（轻量文字/emoji 回退，旧版兼容） / `dark`（库洛米） / `pink`（美乐蒂） / `cinnamoroll`（玉桂狗）。新工作台优先使用内联 SVG 或项目内图片作为主要导航图标。
+默认 6 套：`minimal`（轻量文字/emoji 回退，旧版兼容） / `dark`（旧版库洛米） / `pink`（美乐蒂） / `cinnamoroll`（玉桂狗） / `popmart`（POP MART 糖果色） / `kuromi`（Kuromi 紫夜）。新工作台优先使用内联 SVG 或项目内图片作为主要导航图标。
 - 原图要求：库洛米/美乐蒂是 3×3 九宫格（每格一个形象，部分格是相机/水印需跳过）；玉桂狗是 4×3 网格。裁切用**内容感知居中 + 去白底**，做成 120px 圆形透明 PNG，再 base64 写入 `icons.js`。
+- POP MART 原图为 10 张单图：按文件名排序取前 9 张作为模块图标，第 10 张作为 brand；使用 `tools/generate_popmart_icons.py <原图目录>` 居中裁切为 120px JPEG data URI，再写入 `icons.js`。原图不必提交到仓库，成品已内联优化图标。
+- Kuromi 原图为 9 张单图：按文件名排序分别对应 9 个模块，第一张同时作为 brand；使用 `tools/generate_kuromi_icons.py <原图目录>` 居中裁切为 120px JPEG data URI，再写入 `icons.js`。
 - 防沾边技巧：九宫格先用水平投影找两形象之间的白缝切成上下两半（`split_grid_smart`），再各自 `make_circle`（按非白像素 bbox 居中、pad≈1.15–1.35 保证人物完整、圆形遮罩）。
 - `patch_icons.py` 会把 `icons.js` 注入 `source.html` 的 `ICON_IMGS`，并把 `renderNav` 改成：图标是 `data:` 开头就渲染 `<img class="nav-icon-img">`（圆形），否则按内联 SVG 或文本回退；同时追加 `body[data-theme=...]` 的渐变面板 CSS。
 - **令牌双花括号铁律同样适用于此**：若 `const THEME` 没被替换，必须让构建立即失败；不能依赖主题回退来掩盖令牌错误。`build.js` 会检查 `{{THEME}}`、`{{PREFIX}}`、`{{TITLE}}` 是否全部替换，并对每个变体执行冒烟测试。
