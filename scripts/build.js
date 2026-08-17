@@ -40,10 +40,10 @@ fs.mkdirSync(DIST, { recursive: true });
 //   1) add an entry below  2) add a `data-theme="<theme>"` CSS block in source.html
 //   3) add an entry to ICON_IMGS['<theme>'] in assets/icons/icons.js  ----
 const VARIANTS = [
-  { theme: 'minimal',     prefix: 'wb_minimal_',     title: '我的工作台' },
-  { theme: 'pink',        prefix: 'wb_pink_',        title: '我的工作台' },
-  { theme: 'dark',        prefix: 'wb_dark_',        title: '我的工作台' },
-  { theme: 'cinnamoroll', prefix: 'wb_cinnamoroll_', title: '我的工作台' },
+  { theme: 'minimal',     prefix: 'wb_minimal_',     title: '秋秋工作台' },
+  { theme: 'pink',        prefix: 'wb_pink_',        title: '秋秋工作台' },
+  { theme: 'dark',        prefix: 'wb_dark_',        title: '秋秋工作台' },
+  { theme: 'cinnamoroll', prefix: 'wb_cinnamoroll_', title: '秋秋工作台' },
 ];
 
 // Sub-tabs to click through per module, so the smoke test exercises every branch.
