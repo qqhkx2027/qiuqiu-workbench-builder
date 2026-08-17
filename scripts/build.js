@@ -48,6 +48,28 @@ const VARIANTS = [
   { theme: 'kuromi',      prefix: 'wb_kuromi_',      title: '秋秋工作台' },
 ];
 
+// Validate the source icon registry before producing dist files. Without this
+// check a new theme can silently fall back to minimal emoji icons.
+const ICON_KEYS = ['home', 'todo', 'create', 'media', 'ledger', 'health', 'diary', 'finance', 'ai', 'brand'];
+const ICONS_FILE = path.join(here, '..', 'assets', 'icons', 'icons.js');
+const iconSource = fs.readFileSync(ICONS_FILE, 'utf8').trim();
+const iconMatch = iconSource.match(/^const ICON_IMGS=(.*);$/s);
+if (!iconMatch) { console.error('Cannot parse ' + ICONS_FILE); process.exit(1); }
+let iconMap;
+try { iconMap = JSON.parse(iconMatch[1]); } catch (error) {
+  console.error('Invalid JSON in ' + ICONS_FILE + ':', error.message);
+  process.exit(1);
+}
+VARIANTS.forEach(v => {
+  const icons = iconMap[v.theme];
+  if (!icons) throw new Error(`Missing icon set for theme: ${v.theme}`);
+  ICON_KEYS.forEach(key => {
+    if (typeof icons[key] !== 'string' || (!icons[key].startsWith('data:') && v.theme !== 'minimal')) {
+      throw new Error(`Missing runtime icon ${v.theme}.${key}`);
+    }
+  });
+});
+
 // Sub-tabs to click through per module, so the smoke test exercises every branch.
 // Keys must match state.tabs.<module>; values are the tab keys.
 const SUBTABS = {
@@ -122,6 +144,10 @@ function smoke(html, label) {
     const renderFns = Object.getOwnPropertyNames(sandbox)
       .filter(n => n.startsWith('render') && typeof sandbox[n] === 'function');
     if (!renderFns.length) throw new Error('No render* functions found');
+    const crudFns = ['addTodo','editTodo','addGoal','editGoal','addTrip','editTrip','addSchedule','editSchedule','addAINews','editAINews','addFinNews','editFinNews','addLedger','editLedger','addMedia','editMedia','addDrum','editDrum','addFood','editFood','addDiaryItem','removeItem'];
+    crudFns.forEach(name => {
+      if (typeof sandbox[name] !== 'function') throw new Error('Missing CRUD function: ' + name);
+    });
     renderFns.forEach(name => {
       sandbox[name]();
       console.log('OK  ' + name + '  (content length: ' + (elements['content'] ? elements['content']._html.length : 0) + ')');

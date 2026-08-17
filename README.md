@@ -27,7 +27,7 @@
 | POP MART 糖果色 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/popmart.html) |
 | Kuromi 紫夜 | [打开](https://qqhkx2027.github.io/qiuqiu-workbench-builder/kuromi.html) |
 
-POP MART 主题使用你提供的 10 张图片生成 9 个导航图标和 1 个工作台头像；Kuromi 主题使用 9 张图片生成对应图标。原图不写入成品，图标会压缩后内联到单文件 HTML。
+POP MART 主题使用你提供的 10 张图片生成 9 个导航图标和 1 个工作台头像；Kuromi 主题使用 9 张图片生成对应图标。原图不写入成品，图标会同时保存为 `assets/icons/<主题>_*.png` 供检查，并以内联 PNG Base64 写入单文件 HTML。
 
 也可以直接打开 WorkBuddy 版本：[秋秋工作台 · pink](https://eee341961ba346b4be4538e1e8703b3e.app.workbuddy.link/pink.html)
 
@@ -62,6 +62,20 @@ https://github.com/qqhkx2027/qiuqiu-workbench-builder
 ```text
 我想做一个减脂工作台，请先用苏格拉底提问法，一次只问我一个问题。
 ```
+
+## 怎么使用
+
+普通用户直接打开在线预览，或把仓库地址交给智能体安装 Skill：
+
+| 目的 | 可以这样说 | 结果 |
+| --- | --- | --- |
+| 查看 | “打开秋秋工作台的 Kuromi 主题” | 返回对应在线页面 |
+| 新增 | “新增一个自媒体排期，包含平台、日期和状态” | 弹窗填写后保存到当前浏览器 |
+| 修改 | “把这条排期改成已发布” | 只更新选中的记录 |
+| 删除 | “删除这条排期” | 只删除目标记录并刷新列表 |
+| 备份 | “导出我的工作台数据” | 下载 JSON，可在另一台设备导入 |
+
+数据只保存在当前浏览器。清空示例会同时清除当前浏览器中的个人记录，操作前会二次确认。
 
 ## 秋秋工作法
 
@@ -103,8 +117,10 @@ qiuqiu-workbench-builder/
 ├── assets/
 │   ├── starter.html                 # 轻量起始模板
 │   ├── qiqiu-workbench-source.html  # 完整生产范例
-│   └── icons/                       # 主题图标资源（含 POP MART 优化图标）
+│   └── icons/                       # 主题 PNG 预览、brand 与 icons.js 运行时清单
 ├── scripts/build.js                 # 维护者构建与冒烟测试
+├── tools/generate_theme_icons.py    # 同时生成 PNG 预览和 icons.js 映射
+├── tools/generate_icons.py          # 旧版九宫格图标兼容脚本
 └── dist/                            # 已生成的在线预览文件
 ```
 
@@ -112,7 +128,7 @@ qiuqiu-workbench-builder/
 
 直接使用上面的在线预览即可。
 
-`assets/`、`scripts/` 和 `dist/` 主要服务于技能维护者：当需要修改模板、增加主题或生成离线 HTML 时，维护者才需要运行构建脚本。它不是普通用户的安装前置条件。
+`assets/`、`scripts/` 和 `dist/` 主要服务于技能维护者：当需要修改模板、增加主题或生成离线 HTML 时，维护者才需要运行构建脚本。它不是普通用户的安装前置条件。图标目录的文件说明见 [`assets/icons/README.md`](assets/icons/README.md)。
 
 ## 数据与隐私
 
@@ -129,7 +145,7 @@ qiuqiu-workbench-builder/
 node scripts/build.js
 ```
 
-构建脚本会检查所有主题和子模块，必须看到：
+构建脚本会先检查每套主题是否拥有完整的 `home`～`ai` 与 `brand` 图标，再检查所有主题和子模块，必须看到：
 
 ```text
 ALL VARIANTS PASSED
