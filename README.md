@@ -145,7 +145,7 @@ qiuqiu-workbench-builder/
 
 ```bash
 node scripts/build.js
-python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+python3 tools/validate_skill.py .
 ```
 
 构建成功必须看到：

@@ -68,7 +68,7 @@ description: 把个人效率、生活管理或内容创作需求整理成可离�
 5. 运行 Skill 校验：
 
    ```bash
-   python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+   python3 tools/validate_skill.py .
    ```
 
 6. 人工检查移动窄屏、主题图标、增删改、导入导出、清空确认和示例数据，再分享在线链接；不要把 `file://` 当作分享链接。
