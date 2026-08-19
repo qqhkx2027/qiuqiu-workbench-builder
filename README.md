@@ -41,6 +41,12 @@
 | [POP MART 糖果色](https://qqhkx2027.github.io/qiuqiu-workbench-builder/popmart.html) | 玩具感、彩色 | 喜欢收藏和视觉装饰 |
 | [Kuromi 紫夜](https://qqhkx2027.github.io/qiuqiu-workbench-builder/kuromi.html) | 深紫、个性 | 喜欢暗色与潮流风格 |
 
+#### 六套主题，一张图看懂
+
+<p align="center">
+  <img src="assets/readme/theme-overview.png" alt="秋秋工作台六套主题总览" width="100%">
+</p>
+
 #### 秋秋同款粉色主题
 
 <p align="center">
